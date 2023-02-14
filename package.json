@@ -1,0 +1,58 @@
+{
+  "name": "data-wrappers",
+  "version": "0.0.1",
+  "description": "Simple instanced defaulting for flat javascript objects",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/06000208/data-wrappers.git"
+  },
+  "author": "06000208",
+  "license": "CC0-1.0",
+  "bugs": {
+    "url": "https://github.com/06000208/data-wrappers/issues"
+  },
+  "homepage": "https://github.com/06000208/data-wrappers",
+  "scripts": {
+    "test": "echo \"Error: no tests\" && exit 1",
+    "lint": "eslint . --ext .js,.mjs,.cjs",
+    "fix": "eslint . --ext .js,.mjs,.cjs --fix",
+    "ts": "npx tsc",
+    "build": "node esbuild.config.js && npx tsc",
+    "docs": "echo \"Error: no docs\" && exit 1",
+    "prepare": "npm run build"
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "type": "module",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./src/index.js",
+      "require": "./dist/index.cjs",
+      "default": "./src/index.js"
+    },
+    "./cjs": {
+      "import": "./dist/index.cjs",
+      "require": "./dist/index.cjs",
+      "default": "./dist/index.cjs"
+    },
+    "./browser": {
+      "import": "./dist/index.browser.js",
+      "default": "./dist/index.browser.js"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "browser": "./dist/index.browser.js",
+  "unpkg": "./dist/index.browser.js",
+  "sideEffects": false,
+  "engines": {
+    "node": ">=16.9.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.17.5",
+    "eslint": "^8.33.0",
+    "typescript": "^4.9.5"
+  }
+}

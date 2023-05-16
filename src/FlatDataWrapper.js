@@ -3,14 +3,14 @@
  * @param {*} value
  * @returns {Object.<string, *>}
  */
-export const resolveDataFromWrapper = (value) => value instanceof FlatDataWrapper ? value.data : value;
+export const resolveDataFromWrapper = (value) => isDataWrapper(value) ? value.data : value;
 
 /**
  * Whether or not something is a data wrapper
  * @param {*} value
  * @returns {boolean};
  */
-export const isDataWrapper = (value) => Boolean(value instanceof FlatDataWrapper);
+export const isDataWrapper = (value) => value ? Boolean(value instanceof FlatDataWrapper) : false;
 
 /**
  * Data wrapper for a flat object and defaults accessible through a proxy, mainly useful for flat key/value settings or user data.
